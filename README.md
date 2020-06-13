@@ -480,5 +480,11 @@ Auf Basis der kompilierten Artefakte (Web App mit Razor Pages und die Web Api) k
 
      ![Check Production](images/cd/gifs/06_check-production.gif)
 
+19. Ansicht des `Release` nach dem Deployment:
+
+     ![Release](images/cd/13_final-result.png)
+
+     Somit ist das `Release-1` in beiden Umgebungen (`Staging` und `Production`) sauber ausgeliefert.
+
 
 
