@@ -1,0 +1,59 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<h2>Sensors with counts of measurements</h2>
+<hr />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SensorsOverview[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SensorsOverview[0].Location)
+            </th>
+            <th class="text-center col-md-1">
+                @Html.DisplayNameFor(model => model.SensorsOverview[0].CountMeasurements)
+            </th>
+            <th class="text-center col-md-1">
+                @Html.DisplayNameFor(model => model.SensorsOverview[0].Unit)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.SensorsOverview) {
+        <tr>
+            <td>
+                <a asp-page="/Sensors/List" asp-route-id="@item.Id">@item.Name</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td class="text-center col-md-1">
+                @Html.DisplayFor(modelItem => item.CountMeasurements)
+            </td>
+            <td class="text-center col-md-1">
+                @Html.DisplayFor(modelItem => item.Unit)
+            </td>
+            <td>
+                <a asp-page="/Sensors/Edit" asp-route-id="@item.Id">Edit Sensor</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<script>
+    function DoPostBack() {
+        document.formIndex.submit();
+    }
+</script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,44 @@
+﻿@page
+@model SmartSchool.Web.Pages.Sensors.EditModel
+
+@{
+    ViewData["Title"] = "Edit Member";
+}
+
+<h2>Edit Sensor</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="Sensor.Name" class="control-label"></label>
+                <input asp-for="Sensor.Name" class="form-control" />
+                <span asp-validation-for="Sensor.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sensor.Location" class="control-label"></label>
+                <input asp-for="Sensor.Location" class="form-control" />
+                <span asp-validation-for="Sensor.Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sensor.Unit" class="control-label"></label>
+                <input asp-for="Sensor.Unit" class="form-control" />
+                <span asp-validation-for="Sensor.Unit" class="text-danger"></span>
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Sensor.Id" />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="/Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

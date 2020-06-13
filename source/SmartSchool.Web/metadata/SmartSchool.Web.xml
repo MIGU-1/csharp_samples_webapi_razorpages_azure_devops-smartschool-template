@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SmartSchool.Web</name>
+    </assembly>
+    <members>
+        <member name="T:SmartSchool.Web.ApiControllers.MeasurementsController">
+            <summary>
+            API-Controller für die Abfrage von Messwerten
+            </summary>
+        </member>
+        <member name="M:SmartSchool.Web.ApiControllers.MeasurementsController.#ctor(SmartSchool.Core.Contracts.IUnitOfWork)">
+            <summary>
+            Constructor mit DI
+            </summary>
+            <param name="unitOfWork"></param>
+        </member>
+        <member name="M:SmartSchool.Web.ApiControllers.MeasurementsController.Get(System.Int32)">
+            <summary>
+            Liefert den Messwert per Id und den zugehörigen Sensorinformationen
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.Web.ApiControllers.MeasurementsController.GetMeasurementForSensorAt(System.Int32,System.String,System.String)">
+            <summary>
+            Liefert den nächsten Messwert ab einer vorgegebenen Zeit
+            </summary>
+            <param name="sensorId"></param>
+            <param name="date"></param>
+            <param name="time"></param>
+            <returns>Messwert oder NotFound, falls es keinen Messwert ab der Zeit gab</returns>
+        </member>
+        <member name="M:SmartSchool.Web.ApiControllers.MeasurementsController.PostMeasurement(SmartSchool.Web.DataTransferObjects.PostMeasurementDto)">
+            <summary>
+            Fügt für den Sensor mit der Id einen Messwert hinzu
+            </summary>
+            <param name="measurementDto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SmartSchool.Web.ApiControllers.SensorsController">
+            <summary>
+            API-Controller für die Abfrage von Mitgliedern
+            </summary>
+        </member>
+        <member name="M:SmartSchool.Web.ApiControllers.SensorsController.#ctor(SmartSchool.Core.Contracts.IUnitOfWork)">
+            <summary>
+            Constructor mit DI
+            </summary>
+            <param name="unitOfWork"></param>
+        </member>
+        <member name="M:SmartSchool.Web.ApiControllers.SensorsController.GetSensorNames">
+            <summary>
+            Liefert alle Namen der Sensoren
+            </summary>
+            <response code="200">Die Abfrage war erfolgreich.</response>
+        </member>
+        <member name="M:SmartSchool.Web.ApiControllers.SensorsController.GetSensor(System.Int32)">
+            <summary>
+            Liefert den Sensor mit der Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.Web.ApiControllers.SensorsController.GetSensorsWithCountOfMeasurements">
+            <summary>
+            Liefert die Sensoren und die Anzahl ihrer Messwerte
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.Web.ApiControllers.SensorsController.GetSensorsWithAverageValues">
+            <summary>
+            Liefert Sensoren mit den Mittelwerten ihrer Messwerte
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:SmartSchool.Web.DataTransferObjects.PostMeasurementDto">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SmartSchool.Web.Pages.Sensors.ListModel.SelectedSensorId">
+            <summary>
+            In Combobox ausgewählter Sensor und Location
+            </summary>
+        </member>
+    </members>
+</doc>
