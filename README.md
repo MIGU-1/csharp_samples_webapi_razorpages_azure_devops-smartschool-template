@@ -1,4 +1,3 @@
-# Tutorial 'SmartSchool (Azure)'
 
 # Lehrziele
 
@@ -293,15 +292,15 @@ Dh. dass bei jeglicher Code-Änderung (Push in das Git-Repository) ein Compile- 
    trigger:
     - master
 
-    pool:
+   pool:
       vmImage: 'windows-latest'
 
-    variables:
+   variables:
       solution: '**/*.sln'
       buildPlatform: 'Any CPU'
       buildConfiguration: 'Release'
 
-    steps:
+   steps:
     - task: NuGetToolInstaller@1
       displayName: NuGet (Installation)
 
