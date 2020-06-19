@@ -361,31 +361,36 @@ Auf Basis der kompilierten Artefakte (Web App mit Razor Pages und die Web Api) k
 
 1. Melden Sie sich im [Azure Portal](https://portal.azure.com) mit ihrem \<IhrName\>@htblaleonding.onmicrosoft.com Benutzer an.
 
-2. Dort sollten Sie eine  `Resource Group` mit ihrem Namen finden, in welcher Sie nun die in `Azure` gehostete Web-Site konfigurieren werden.
+2. Wechseln Sie rechts oben auf das `Standardverzeichnis`:
+
+     ![Change Directory](images/cd/gifs/07_change-directory.gif)
+
+
+3. Dort sollten Sie eine  `Resource Group` mit ihrem Namen finden, in welcher Sie nun die in `Azure` gehostete Web-Site konfigurieren werden.
 
      *Hinweis:* Eine `Resource Group` stellt einen Behälter dar, in welchem verschiedenste Azure Services zusammengefasst werden können.
 
      ![Resource Group - Overview](images/cd/00_resource-group-overview.png)
 
-3. Wählen Sie ihre `Resource Group` aus und klicken Sie auf `Add`:
+4. Wählen Sie ihre `Resource Group` aus und klicken Sie auf `Add`:
 
      ![Add Resource](images/cd/01_add-resource.png)
 
-4. Suchen Sie nach dem Service `Web App`
+5. Suchen Sie nach dem Service `Web App`
 
-5. Legen Sie folgende Konfiguration für ihre neue `Web App` fest:
+6. Legen Sie folgende Konfiguration für ihre neue `Web App` fest:
 
      ![Add Resource](images/cd/02_add-webapp-prod.png)
 
      **Bei Punkt (1) ist wichtig, dass Sie anstatt `smartschool-jf` hinten ihr Kürzel anstatt `-jf` verwenden!**
 
-5. Analog zur `Web App` für die Produktivumgebung legen Sie auch eine `Web App` für die Staging Umgebung an:
+7. Analog zur `Web App` für die Produktivumgebung legen Sie auch eine `Web App` für die Staging Umgebung an:
 
      ![Add Resource](images/cd/03_add-webapp-staging.png)
 
      **Bei Punkt (1) ist wichtig, dass Sie anstatt `smartschool-jf-staging` ihr Kürzel anstatt `-jf-` verwenden!**
 
-6. Konfiguration der erstellten `Web App` Services (`smartschool-jf-staging` und `smartschool-jf`)
+8. Konfiguration der erstellten `Web App` Services (`smartschool-jf-staging` und `smartschool-jf`)
 
    1. `Connection String` für die Verbindung zur Datenbank in beiden `Web App` Services konfigurieren:
 
@@ -411,54 +416,54 @@ Auf Basis der kompilierten Artefakte (Web App mit Razor Pages und die Web Api) k
         | Value       | `Development` |
 
 
-7. Melden Sie sich bei [Azure DevOps](https://dev.azure.com/) mit ihrem \<IhrName\>@htblaleonding.onmicrosoft.com Benutzer an.
-8. Navigieren Sie im Projekt `SmartSchool-Azure` zum Abschnitt Pipelines:
+9. Melden Sie sich bei [Azure DevOps](https://dev.azure.com/) mit ihrem \<IhrName\>@htblaleonding.onmicrosoft.com Benutzer an.
+10. Navigieren Sie im Projekt `SmartSchool-Azure` zum Abschnitt Pipelines:
 
      ![Pipelines](images/cd/07_pipelines.png)
 
-9. Erstellen Sie eine neue Pipeline:
+11. Erstellen Sie eine neue Pipeline:
 
      ![Neue Pipeline](images/cd/08_create-release-pipeline.png)
 
-10. Wählen Sie als Vorlage `Empty job` aus:
+12. Wählen Sie als Vorlage `Empty job` aus:
 
      ![Template wählen](images/cd/09_choose-template.png)
 
-11. Benennen Sie ihre `Release Pipeline` auf `Deployment` um:
+13. Benennen Sie ihre `Release Pipeline` auf `Deployment` um:
 
      ![Pipeline umbenennen](images/cd/10_rename-pipeline.png)
 
-12. Konfigurieren Sie das `Build Artefact` welches als Basis für ihr Deployment dienen soll:
+14. Konfigurieren Sie das `Build Artefact` welches als Basis für ihr Deployment dienen soll:
 
      ![Artefakt wählen](images/cd/11_configure-build-artefact.png)
 
-13. `Trigger` für das Deployment konfigurieren:
+15. `Trigger` für das Deployment konfigurieren:
 
      ![Trigger konfigurieren](images/cd/12_configure-trigger.png)
 
      Mit diesem `Trigger` wird bei jedem erfolgreichem Build die `Release Pipeline` für die Auslieferung angestoßen.
 
-14. Konfigurieren Sie die Auslieferung in die `Staging` Umgebung:
+16. Konfigurieren Sie die Auslieferung in die `Staging` Umgebung:
 
      ![Trigger konfigurieren](images/cd/12_configure-trigger.png)
 
-15. Legen Sie fest in welche `Web App` die gebauten Artefakte ausgeliefert werden sollen:
+17. Legen Sie fest in welche `Web App` die gebauten Artefakte ausgeliefert werden sollen:
 
      ![Auslieferung konfigurieren](images/cd/gifs/00_add-deployment-task.gif)
 
-16. Dupliziern Sie die `Staging` Stage und nennen Sie sie `Production`:
+18. Dupliziern Sie die `Staging` Stage und nennen Sie sie `Production`:
 
      ![Stage klonen](images/cd/gifs/01_clone-stage.gif)
 
       Mit dieser Stage wird nach dem Deployment in die `Staging` Umgebung auch ein Deployment in die Produktivumgebung durchgeführt.
 
-16. Festlegen eines `Pre deployment approvals` für die `Production` Stage:
+19. Festlegen eines `Pre deployment approvals` für die `Production` Stage:
 
      ![Pre Deployment Approval](images/cd/gifs/02_production-approval.gif)
 
       Dies hat den Grund, dass eine Persion das Deployment auf die Produktivumgebung freigeben muss.
 
-16. Manuelles Deployment durchführen:
+20. Manuelles Deployment durchführen:
 
      ![Create Release](images/cd/gifs/03_create-release.gif)
 
@@ -466,24 +471,33 @@ Auf Basis der kompilierten Artefakte (Web App mit Razor Pages und die Web Api) k
      Zum Testen kann auch manuell ein `Release` erstellt werden. Das Erstellen eines `Releases` ist gleichbedeutend mit dem Anfordern einer Auslieferung.
 
 
-16. `Staging` Umgebung auf korrekte Funktionalität prüfen:
+21. `Staging` Umgebung auf korrekte Funktionalität prüfen:
 
      ![Check Staging](images/cd/gifs/04_check-staging.gif)
 
 
-17. Nach dem `Staging`-Deployment wird nun in die `Production`-Umgebung ausliefern:
+22. Nach dem `Staging`-Deployment wird nun in die `Production`-Umgebung ausliefern:
 
      ![Production Deployment](images/cd/gifs/05_deploy-to-production.gif)
 
-18. `Staging` Umgebung auf korrekte Funktionalität prüfen:
+23. `Staging` Umgebung auf korrekte Funktionalität prüfen:
 
      ![Check Production](images/cd/gifs/06_check-production.gif)
 
-19. Ansicht des `Release` nach dem Deployment:
+24. Ansicht des `Release` nach dem Deployment:
 
      ![Release](images/cd/13_final-result.png)
 
      Somit ist das `Release-1` in beiden Umgebungen (`Staging` und `Production`) sauber ausgeliefert.
+
+
+# Zusammenfassung
+
+Nun ist es möglich eine neue Anforderung per Code-Ändeurng und anschließendem Commit/Push in die `Staging-` bzw. im Anschluß in die `Production`-Umgebung auszuliefern.
+
+Dieses Diagram fasst die einzelnen Schritte zusammen:
+
+![CI/CD Overview](images/preparation/04_cicd-overview.png)
 
 
 
